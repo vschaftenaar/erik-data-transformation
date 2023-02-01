@@ -1,34 +1,25 @@
 server <- function(input, output, session) {
   session$onSessionEnded(function(){stopApp()})
 
+  db <- reactiveValues()
   
+  observe({
+    if(!is.null(input$data.upload)){
+      db$data <- as.data.table(fread(file=input$data.upload$datapath))
+    }else{
+      db$data <- data.table('select data-file first'=0)
+    }
+    tmp.chk <<- db$data}
+    )
   
+# data-transformation tab -------------------------------------------------
+  output$transformation <- renderUI(transformation(input,db$data))
 
-# tab-00 -------------------------------------------------------
-  output$tab_010 <- renderUI(tab_010())
-
-  
-  
-# tab-021 ------------------------------------------------------
-  output$tab_021 <- renderUI(tab_021())
-
-# tab-022 ------------------------------------------------------
-  output$tab_022 <- renderUI(tab_022())
-  
-  
-  
-# tab-dynamic --------------------------------------------------
-  lapply(paste0('page ',dynamic.pages), function(x){output[[paste0('dynamic.',x)]] <- renderUI(dynamic(x))})
-  
-  
-
-# tab-sidebar -------------------------------------------------------------
-  output$sidebar <- renderUI(sidebar(input))
-
-
-# tab-dynamic-sidebar -----------------------------------------------------
-  lapply(paste0('sidebar page ',dynamic.sidebar.pages), function(x){output[[paste0('dynamic.sidebar.',x)]] <- renderUI(dynamic.sidebar(input,x))})
-  
+  observeEvent(input$transform.db,{
+    message('run')
+    output$out.dt  <- DT::renderDataTable(out.dt(db$data,input))
+    
+  })
   
 # Style -------------------------------------------------------------------
   output$style <- renderUI(getStyle())
