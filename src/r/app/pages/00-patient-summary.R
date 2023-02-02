@@ -67,7 +67,7 @@ out.dt <- function(db,input){
         tmp <- db[id.tmp==i]
         tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i)
         for(j in 1:nrow(tmp)){
-          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp','ID')])
+          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
         }
         names(tmp.trans.tmp)[1] <- 'id'
         db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
