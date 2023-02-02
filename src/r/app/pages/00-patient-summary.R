@@ -70,7 +70,7 @@ out.dt <- function(db,input){
           #tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
           tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp',select.id)])
         }
-        names(tmp.trans.tmp)[1] <- 'id'
+        names(tmp.trans.tmp)[1] <- select.id
         db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
       }
   }
