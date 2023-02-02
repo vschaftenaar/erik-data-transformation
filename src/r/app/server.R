@@ -16,7 +16,7 @@ server <- function(input, output, session) {
   output$transformation <- renderUI(transformation(input,db$data))
 
   observeEvent(input$transform.db,{
-    message('run')
+    
     output$out.dt  <- DT::renderDataTable(out.dt(db$data,input))
     
   })

@@ -56,14 +56,13 @@ out.dt <- function(db,input){
   select.id <- input$select.id
   id <- as.vector(unlist(unique(db[,..select.id])))
   
+  db.out <- data.table()
+  
   if(length(id)>1){
     db$id.tmp <- db[,..select.id]
     
     db <- db[order(id.tmp)]
-  
-    db.out <- data.table()
-      
-    
+
       for(i in id){
         tmp <- db[id.tmp==i]
         tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i)
