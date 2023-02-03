@@ -5,7 +5,8 @@ server <- function(input, output, session) {
   
   observe({
     if(!is.null(input$data.upload)){
-      db$data <- as.data.table(fread(file=input$data.upload$datapath))
+      n.col <- ncol(fread(file=input$data.upload$datapath))
+      db$data <- as.data.table(fread(file=input$data.upload$datapath,colClasses = rep('character',n.col)))
     }else{
       db$data <- data.table('select data-file first'=0)
     }
