@@ -14,18 +14,12 @@ source('./src/r/app/support/lib.r')
 source('./src/r/app/support/style.r')
 source('./src/r/app/support/func.r')
 
-
-side.logo      <- list(size='50%',  opacity=.10)
-frontpage.logo <- list(size='300px',opacity=.3)
-
 invisible(sapply(list.files(path = './src/r/app/pages/',pattern="*.R",full.names = T),source))
 
 # IP configuration --------------------------------------------------------
 ipPort=sample(c(1000:65535))[1]
 
-ip <- gsub(".*? ([[:digit:]])", "\\1", system("ipconfig", intern=T)[grep("IPv4", system("ipconfig", intern = T))])
 ip <- '127.0.0.1' #local host
-
 
 # run app -----------------------------------------------------------------
 runApp(appDir = './src/r/app/',port = ipPort,launch.browser = shell(paste0('start msedge --app=http://',ip,':',ipPort)))

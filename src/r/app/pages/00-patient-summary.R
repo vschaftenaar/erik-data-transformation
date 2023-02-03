@@ -10,7 +10,8 @@ transformation <- function(input,db){
     # input
       ,panel(
            column(6,fileInput('data.upload','', multiple = FALSE, accept = c('csv','xlsx'), width = "100%"))
-          ,column(6,renderUI(getColNames(db)),style='margin-top:-5px;')
+          ,column(3,renderUI(getColNames(db,'id',F)),style='margin-top:-5px;')
+          ,column(3,renderUI(getColNames(db,'transpose',T)),style='margin-top:-5px;')
         )
       
     # present original table
@@ -32,8 +33,8 @@ transformation <- function(input,db){
   return(tagList)
 }
 
-getColNames <- function(db){
-  return(list(pickerInput(inputId = 'select.id',label = '',choices = colnames(db),width = '100%')))
+getColNames <- function(db,type,multiple){
+  return(list(pickerInput(inputId = paste0('select.',type),label = type,choices = colnames(db),width = '100%',multiple = multiple)))
 }
 
 dt.original <- function(db){
@@ -43,8 +44,6 @@ dt.original <- function(db){
       options = list(
         dom='Bftp'
         ,pageLength = 10
-        # ,columnDefs = list(list(className = 'dt-left', targets = 0:5))
-        # ,columnDefs = list(list(className = 'dt-right', targets = 6:10))
         ,buttons = c('copy','excel')
       ))}else{
       dt <- data.table()
@@ -53,7 +52,9 @@ dt.original <- function(db){
 }
 
 out.dt <- function(db,input){
-  select.id <- input$select.id
+  select.id    <- input$select.id
+  tranpose.var <- input$select.transpose
+  other.var    <- names(db)[!(names(db) %in% c(select.id,tranpose.var))] 
   id <- as.vector(unlist(unique(db[,..select.id])))
   
   db.out <- data.table()
@@ -67,8 +68,12 @@ out.dt <- function(db,input){
         tmp <- db[id.tmp==i]
         tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i)
         for(j in 1:nrow(tmp)){
-          #tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
-          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
+          if(j==1){
+            tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
+          }else{
+            excl <- c('id.tmp',other.var)
+            tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-..excl])
+          }
         }
         names(tmp.trans.tmp)[1] <- select.id
         db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
@@ -80,7 +85,7 @@ out.dt <- function(db,input){
       db.out,rownames = F,selection = 'none',extensions = 'Buttons',
       options = list(
         dom='Bftp'
-        ,pageLength = 25
+        ,pageLength = 250000
         ,buttons = c('copy','excel')
         ,scrollX = TRUE
       ))}else{
