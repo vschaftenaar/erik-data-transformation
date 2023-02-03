@@ -23,7 +23,7 @@ transformation <- function(input,db){
         ,width = '150px'
         ,icon=icon('recycle')
         ,style=paste0("color:",palette$bg,"; background-color: ",palette$fg.0,";"))
-    
+    ,br(),br()
     # present transformed table
       ,div(style='font-size:80%',DT::dataTableOutput('out.dt'))
     )
@@ -60,7 +60,7 @@ out.dt <- function(db,input){
   
   if(length(id)>1){
     db$id.tmp <- db[,..select.id]
-    
+    db[,paste0(select.id):=NULL]
     db <- db[order(id.tmp)]
 
       for(i in id){
@@ -68,7 +68,7 @@ out.dt <- function(db,input){
         tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i)
         for(j in 1:nrow(tmp)){
           #tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
-          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp',select.id)])
+          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
         }
         names(tmp.trans.tmp)[1] <- select.id
         db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)

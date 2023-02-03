@@ -12,9 +12,6 @@ ui <- navbarPage(
         'transformation'
         ,uiOutput('style') # Styling, need to be somewhere in the UI, nothing to do with CHAPTER 1
         ,uiOutput('transformation')
-        # ,column(
-        #   width = 12
-        #   ,uiOutput('out.dt'))
       )
 
 )
