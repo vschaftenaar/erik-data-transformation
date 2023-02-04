@@ -34,7 +34,11 @@ transformation <- function(input,db){
 }
 
 getColNames <- function(db,type,multiple){
-  return(list(pickerInput(inputId = paste0('select.',type),label = type,choices = colnames(db),width = '100%',multiple = multiple)))
+  return(list(pickerInput(
+    inputId = paste0('select.',type)
+    ,label = div(type,style='font-size:75%;')
+    ,choices = colnames(db)
+    ,width = '100%',multiple = multiple)))
 }
 
 dt.original <- function(db){
