@@ -66,15 +66,10 @@ out.dt <- function(db,input){
 
       for(i in id){
         tmp <- db[id.tmp==i]
-        tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i)
+        tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[,..other.var])
         for(j in 1:nrow(tmp)){
-          if(j==1){
-            tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-c('id.tmp')])
-          }else{
-            excl <- c('id.tmp',other.var)
-            tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,-..excl])
+          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,..tranpose.var])
           }
-        }
         names(tmp.trans.tmp)[1] <- select.id
         db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
       }
