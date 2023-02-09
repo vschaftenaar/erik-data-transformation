@@ -70,7 +70,7 @@ out.dt <- function(db,input){
 
       for(i in id){
         tmp <- db[id.tmp==i]
-        tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[,..other.var])
+        tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[1,..other.var])
         for(j in 1:nrow(tmp)){
           tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,..tranpose.var])
           }
