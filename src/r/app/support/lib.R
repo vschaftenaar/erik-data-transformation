@@ -1,7 +1,7 @@
 options(scipen = 999)
 
 
-message('loading packaes...')
+message('loading packages...')
 
 packages <- c(
   "shiny"
