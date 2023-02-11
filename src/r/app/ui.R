@@ -21,6 +21,14 @@ ui <- navbarPage(
                  width:     450px;
                  height:    100px;
                  font-size: 20px;}"))
+        ,tags$head(tags$style(paste0(
+        ".progress-bar
+          {background-color:",palette$fg.0,";}")))
+        ,tags$head(tags$style(paste0(
+          ".progress-bar:last-child:before 
+          {background-color:",palette$fg.0.fade,";}")))
+        
+        
       )
 
   
