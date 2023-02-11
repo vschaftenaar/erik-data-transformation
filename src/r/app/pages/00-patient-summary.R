@@ -56,40 +56,48 @@ dt.original <- function(db){
 }
 
 out.dt <- function(db,input){
-  select.id    <- input$select.id
-  tranpose.var <- input$select.transpose
-  other.var    <- names(db)[!(names(db) %in% c(select.id,tranpose.var))] 
-  id <- as.vector(unlist(unique(db[,..select.id])))
-  
-  db.out <- data.table()
-  
-  if(length(id)>1){
-    db$id.tmp <- db[,..select.id]
-    db[,paste0(select.id):=NULL]
-    db <- db[order(id.tmp)]
-
-      for(i in id){
-        tmp <- db[id.tmp==i]
-        tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[1,..other.var])
-        for(j in 1:nrow(tmp)){
-          tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,..tranpose.var])
+  withProgress(
+    message = 'Transposing data' 
+    ,expr   = {
+          select.id    <- input$select.id
+          tranpose.var <- input$select.transpose
+          other.var    <- names(db)[!(names(db) %in% c(select.id,tranpose.var))] 
+          id <- as.vector(unlist(unique(db[,..select.id])))
+          
+          db.out <- data.table()
+          
+          if(length(id)>1){
+            db$id.tmp <- db[,..select.id]
+            db[,paste0(select.id):=NULL]
+            db <- db[order(id.tmp)]
+        
+              for(i in id){
+                incProgress(1/length(id))
+                
+                tmp <- db[id.tmp==i]
+                tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[1,..other.var])
+                for(j in 1:nrow(tmp)){
+                  tmp.trans.tmp <- cbind(tmp.trans.tmp,tmp[j,..tranpose.var])
+                  }
+                names(tmp.trans.tmp)[1] <- select.id
+                db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
+              }
           }
-        names(tmp.trans.tmp)[1] <- select.id
-        db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
-      }
-  }
+          
+          if(nrow(db.out)>1){
+            dt <- DT::datatable(
+              db.out,rownames = F,selection = 'none',extensions = 'Buttons',
+              options = list(
+                dom='Bftp'
+                ,pageLength = 25
+                ,buttons = c('copy','excel')
+                ,scrollX = TRUE
+              ))}else{
+                dt <- data.table()
+              }
+  })
   
-  if(nrow(db.out)>1){
-    dt <- DT::datatable(
-      db.out,rownames = F,selection = 'none',extensions = 'Buttons',
-      options = list(
-        dom='Bftp'
-        ,pageLength = 250000
-        ,buttons = c('copy','excel')
-        ,scrollX = TRUE
-      ))}else{
-        dt <- data.table()
-      }
+  dt.to.export <<- dt
   
   return(dt)
 }
