@@ -245,7 +245,26 @@ getStyle <- function(){
     ,tags$style(HTML(paste0('.material-switch > input[type="checkbox"] + label::before
     ,.material-switch > input[type="checkbox"] + label::after {
       background-color: ',palette$fg.0,'35;}')))
+   
+    # progressbar
+    ,tags$head(tags$style(
+      ".shiny-notification
+                {position:  fixed;
+                 top:       80px;
+                 left:      calc(50vw - 225px);
+                 width:     450px;
+                 height:    100px;
+                 font-size: 20px;}"))
+    ,tags$head(tags$style(paste0(
+      ".progress-bar
+          {background-color:",palette$fg.0,";}")))
+    
+    ,tags$head(tags$style(paste0(
+      ".progress-bar:last-child:before 
+          {background-color:",palette$fg.0,"50;}")))
     
   )
+  
+  
   return(tagList)
 }
