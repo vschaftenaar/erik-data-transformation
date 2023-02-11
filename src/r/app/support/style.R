@@ -40,6 +40,30 @@ palette <- data.table(
   h3            = '#000000'
 )
 
+palette <- data.table(
+  bg            = '#ffffff',
+  panel         = '#8baf9d',
+  txt           = '#000000',
+  panel.txt     = '#ffffff',
+  fg.0          = '#8baf9d',
+  fg.0.fade     = '#00619215',
+  fg.1          = '#8CC6D0',
+  fg.2          = '#DFEFF2',
+  fg.3          = '#FFF2CD',
+  fg.4          = '#D35F80',
+  dark          = '#749f89',
+  red           = '#D35F80',
+  green         = '#8CC6D0',
+  dropdown      = '#f6f6f6',
+  side.panel.bg = '#ffffff',
+  caret         = '#ffffff',
+  dt.head       = '#ffffff',
+  h1            = '#000000',
+  h2            = '#000000',
+  h3            = '#000000'
+)
+
+
 # palette <- data.table(
 #   bg            = '#f9f9f9',
 #   panel         = '#647886',
