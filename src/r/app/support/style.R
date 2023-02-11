@@ -40,29 +40,29 @@ palette <- data.table(
   h3            = '#000000'
 )
 
-palette <- data.table(
-  bg            = '#f9f9f9',
-  panel         = '#647886',
-  txt           = '#536470',
-  panel.txt     = '#f8f7f7',
-  fg.0          = '#647886',
-  fg.0.fade     = '#64788615',
-  fg.1          = '#8CC6D0',
-  fg.2          = '#DFEFF2',
-  fg.3          = '#FFF2CD',
-  fg.4          = '#D35F80',
-  dark          = '#536470',
-  red           = '#D35F80',
-  green         = '#8CC6D0',
-  dropdown      = '#f6f6f6',
-  side.panel.bg = '#efeded90',
-  caret         = '#f9f9f9',
-  dt.head.txt   = '#f9f9f9',
-  dt.head.bg    = '#647886',
-  h1            = '#536470',
-  h2            = '#536470',
-  h3            = '#536470'
-)
+# palette <- data.table(
+#   bg            = '#f9f9f9',
+#   panel         = '#647886',
+#   txt           = '#536470',
+#   panel.txt     = '#f8f7f7',
+#   fg.0          = '#647886',
+#   fg.0.fade     = '#64788615',
+#   fg.1          = '#8CC6D0',
+#   fg.2          = '#DFEFF2',
+#   fg.3          = '#FFF2CD',
+#   fg.4          = '#D35F80',
+#   dark          = '#536470',
+#   red           = '#D35F80',
+#   green         = '#8CC6D0',
+#   dropdown      = '#f6f6f6',
+#   side.panel.bg = '#efeded90',
+#   caret         = '#f9f9f9',
+#   dt.head.txt   = '#f9f9f9',
+#   dt.head.bg    = '#647886',
+#   h1            = '#536470',
+#   h2            = '#536470',
+#   h3            = '#536470'
+# )
 
 # palette <- data.table(
 #   bg            = '#536470',
