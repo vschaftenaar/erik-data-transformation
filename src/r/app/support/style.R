@@ -278,7 +278,7 @@ getStyle <- function(){
                  left:      25vw;
                  width:     50vw;
                  height:    100px;
-                 background-color:",palette$dark,";
+                 background-color:",palette$fg.0,";
                  font-size: 20px;
                  opacity: 1;}")))
     
@@ -289,7 +289,7 @@ getStyle <- function(){
   
   ,tags$style(HTML(paste0(
       ".progress-bar
-          {background-color:",palette$fg.0,";}")))
+          {background-color:",palette$dark,";}")))
     
   ,tags$style(HTML(paste0(
       ".progress-bar:last-child:before 
