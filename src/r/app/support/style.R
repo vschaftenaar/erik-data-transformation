@@ -269,29 +269,29 @@ getStyle <- function(){
     ,tags$style(HTML(paste0('.material-switch > input[type="checkbox"] + label::before
     ,.material-switch > input[type="checkbox"] + label::after {
       background-color: ',palette$fg.0,'35;}')))
-   
-  # progressbar
-  ,tags$style(HTML(paste0(
+    
+    # progressbar
+    ,tags$style(HTML(paste0(
       ".shiny-notification
                 {position:  fixed;
                  top:       80px;
                  left:      25vw;
                  width:     50vw;
                  height:    100px;
-                 background-color:",palette$fg.0,";
+                 background-color:#f5f5f5;
                  font-size: 20px;
                  opacity: 1;}")))
     
-  ,tags$style(HTML(paste0(".shiny-progress, .progress-text, .progress-message, .progress-detail{
-      color: white;
+    ,tags$style(HTML(paste0(".shiny-progress, .progress-text, .progress-message, .progress-detail{
+      color: black;
       opacity: 1;
     }")))
-  
-  ,tags$style(HTML(paste0(
+    
+    ,tags$style(HTML(paste0(
       ".progress-bar
           {background-color:",palette$dark,";}")))
     
-  ,tags$style(HTML(paste0(
+    ,tags$style(HTML(paste0(
       ".progress-bar:last-child:before 
           {background-color:",palette$fg.0,"50;}")))
     
