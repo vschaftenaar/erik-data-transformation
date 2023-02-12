@@ -275,8 +275,8 @@ getStyle <- function(){
       ".shiny-notification
                 {position:  fixed;
                  top:       80px;
-                 left:      calc(50vw - 225px);
-                 width:     450px;
+                 left:      25vw;
+                 width:     50vw;
                  height:    100px;
                  background-color:",palette$dark,";
                  font-size: 20px;
