@@ -51,7 +51,7 @@ palette <- data.table(
   fg.2          = '#DFEFF2',
   fg.3          = '#FFF2CD',
   fg.4          = '#D35F80',
-  dark          = '#749f89',
+  dark          = '#517563',
   red           = '#D35F80',
   green         = '#8CC6D0',
   dropdown      = '#f6f6f6',
@@ -270,20 +270,28 @@ getStyle <- function(){
     ,.material-switch > input[type="checkbox"] + label::after {
       background-color: ',palette$fg.0,'35;}')))
    
-    # progressbar
-    ,tags$head(tags$style(
+  # progressbar
+  ,tags$style(HTML(paste0(
       ".shiny-notification
                 {position:  fixed;
                  top:       80px;
                  left:      calc(50vw - 225px);
                  width:     450px;
                  height:    100px;
-                 font-size: 20px;}"))
-    ,tags$head(tags$style(paste0(
+                 background-color:",palette$dark,";
+                 font-size: 20px;
+                 opacity: 1;}")))
+    
+  ,tags$style(HTML(paste0(".shiny-progress, .progress-text, .progress-message, .progress-detail{
+      color: white;
+      opacity: 1;
+    }")))
+  
+  ,tags$style(HTML(paste0(
       ".progress-bar
           {background-color:",palette$fg.0,";}")))
     
-    ,tags$head(tags$style(paste0(
+  ,tags$style(HTML(paste0(
       ".progress-bar:last-child:before 
           {background-color:",palette$fg.0,"50;}")))
     
