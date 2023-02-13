@@ -277,7 +277,7 @@ getStyle <- function(){
                  top:       80px;
                  left:      25vw;
                  width:     50vw;
-                 height:    125px;
+                 height:    100px;
                  background-color:#f5f5f5;
                  font-size: 20px;
                  opacity: 1;}")))
@@ -297,8 +297,8 @@ getStyle <- function(){
     
     ,tags$style(HTML(paste0(
       ".shiny-progress-notification .progress {
-          margin-bottom: 15px;
-          height: 25px;}")))
+          margin-bottom: 5px;
+          height: 35px;}")))
     
   )
   
