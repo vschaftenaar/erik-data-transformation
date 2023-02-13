@@ -277,7 +277,7 @@ getStyle <- function(){
                  top:       80px;
                  left:      25vw;
                  width:     50vw;
-                 height:    100px;
+                 height:    125px;
                  background-color:#f5f5f5;
                  font-size: 20px;
                  opacity: 1;}")))
@@ -294,6 +294,11 @@ getStyle <- function(){
     ,tags$style(HTML(paste0(
       ".progress-bar:last-child:before 
           {background-color:",palette$fg.0,"50;}")))
+    
+    ,tags$style(HTML(paste0(
+      ".shiny-progress-notification .progress {
+          margin-bottom: 15px;
+          height: 25px;}")))
     
   )
   
