@@ -16,9 +16,32 @@ server <- function(input, output, session) {
 # data-transformation tab -------------------------------------------------
   output$transformation <- renderUI(transformation(input,db$data))
 
+  observe({
+    output$org.dt  <- DT::renderDataTable(dt.original(db$data))
+  })
+  
   observeEvent(input$transform.db,{
     output$out.dt  <- DT::renderDataTable(out.dt(db$data,input))
   })
+  
+  observeEvent(input$export.excel,{
+    
+    if(exists('dt.to.export')){
+      # file.name <- './out/out.xlsx'
+      file.name <- '../../../out/out.xlsx'
+      openxlsx2::write_xlsx(file = file.name,x = dt.to.export,na.string=F,asTable = T)
+      wb <- openxlsx2::wb_load(file.name)
+      openxlsx2::wb_open(wb)
+    
+    }else{
+      show_alert(
+        title = "Error !!",
+        text  = "no data transposed",
+        type  = "error"
+      )
+    }
+  })
+  
   
 # Style -------------------------------------------------------------------
   output$style <- renderUI(getStyle())

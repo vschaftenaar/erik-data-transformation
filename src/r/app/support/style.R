@@ -73,7 +73,7 @@ getStyle <- function(){
   
   tagList <- list(
     #font
-    tags$head(tags$style(paste0('p {font-family: ',windowsFonts(fontFamily),';font-size:105%;color:',palette$txt,'}')))
+     tags$head(tags$style(paste0('p {font-family: ',windowsFonts(fontFamily),';font-size:105%;color:',palette$txt,'}')))
     ,tags$head(tags$style(paste0('* {font-family: ',windowsFonts(fontFamily),';font-size:105%}')))
     ,tags$head(tags$style(paste0('ul{font-family: ',windowsFonts(fontFamily),';font-size:95%}')))
     ,tags$head(tags$style(paste0('h1{font-family: ',windowsFonts(fontFamily),';color:',palette$h1,'}')))
@@ -180,7 +180,6 @@ getStyle <- function(){
     ,tags$head(tags$style(paste0("table.dataTable tbody tr.odd   {color:",palette$txt,";background-color:",palette$fg.0.fade," !important;}")))
     ,tags$head(tags$style(paste0("table.dataTable thead tr       {color:",palette$bg,"; background-color:",palette$fg.0," !important;}")))
     
-    
     #panel
     ,tags$style(HTML(paste0(".panel-default>.panel-heading {color: ",palette$panel.txt,";background-color:",palette$panel,";border-color: red;}")))
     ,tags$style(HTML(paste0(".panel-body {background-color: ",palette$side.panel.bg,";}")))
@@ -199,9 +198,7 @@ getStyle <- function(){
       .dropdown-menu {background-color:",palette$dropdown,";}")))
     
     #topbar
-    ,tags$style(HTML('#logo-id {position: fixed;right:  25px;top: 15px;}'))
-    ,tags$style(HTML('#lizy-id {position: fixed;right:  100px;top: 15px;}'))
-    # ,tags$style(HTML('#title-id{position: fixed;right: 25vw;top: 15px;}'))
+    ,tags$style(HTML('#logo-id {position: fixed;right:  25px;top: 2px;}'))
     
     #materialSwitch
     ,tags$style(HTML(paste0('.material-switch > input[type="checkbox"]:checked + label::before
@@ -211,7 +208,6 @@ getStyle <- function(){
     ,tags$style(HTML(paste0('.material-switch > input[type="checkbox"] + label::before
     ,.material-switch > input[type="checkbox"] + label::after {
       background-color: ',palette$fg.0,'35;}')))
-    
     
     # progressbar
     ,tags$style(HTML(paste0(

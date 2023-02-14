@@ -16,6 +16,12 @@ source('./src/r/app/support/func.r')
 
 invisible(sapply(list.files(path = './src/r/app/pages/',pattern="*.R",full.names = T),source))
 
+
+
+# clean dt.to.export ------------------------------------------------------
+if(exists('dt.to.export'))rm(dt.to.export)
+
+
 # IP configuration --------------------------------------------------------
 ipPort=sample(c(1000:65535))[1]
 

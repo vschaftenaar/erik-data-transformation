@@ -8,8 +8,9 @@ packages <- c(
   ,"shinythemes"
   ,"shinyWidgets"
   ,"data.table"
-  #"readxl",
-  #"xlsx"
+  #,"readxl"
+  #,"xlsx"
+  ,'openxlsx2'
   )
 
 

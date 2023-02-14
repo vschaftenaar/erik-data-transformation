@@ -14,19 +14,29 @@ transformation <- function(input,db){
         ,column(3,renderUI(getColNames(db,'transpose',T)),style='margin-top:-5px;')
       )
       
-      # present original table
-      ,div(style='font-size:80%',DT::renderDataTable(dt.original(db)))
-      
-      # butto to initiate transformatio
+      # button to initiate transformation
       ,actionButton(
         'transform.db'
         ,p('trasform data',style=paste0("color:",palette$bg,";font-size:100%"))
         ,width = '150px'
         ,icon=icon('recycle')
         ,style=paste0("color:",palette$bg,"; background-color: ",palette$fg.0,";"))
+      
+      ,actionButton(
+        'export.excel'
+        ,p('export to excel',style=paste0("color:",palette$bg,";font-size:100%"))
+        ,width = '150px'
+        ,icon=icon('save')
+        ,style=paste0("color:",palette$bg,"; background-color: ",palette$fg.0,";"))
+      
       ,br(),br()
+      
+      # present original table
+      ,div(style='font-size:9px;',DT::dataTableOutput('org.dt'))
+      ,br()
+      ,hr()
       # present transformed table
-      ,div(style='font-size:80%',DT::dataTableOutput('out.dt'))
+      ,div(style='font-size:9px',DT::dataTableOutput('out.dt'))
     )
   )
   
@@ -44,11 +54,11 @@ getColNames <- function(db,type,multiple){
 dt.original <- function(db){
   if(nrow(db)>1){
     dt <- DT::datatable(
-      db,rownames = F,selection = 'none',extensions = 'Buttons',
+      db,rownames = F,selection = 'none',
       options = list(
-        dom='Bftp'
+        dom='ftp'
         ,pageLength = 10
-        ,buttons = c('copy','excel')
+        ,scrollX = TRUE
       ))}else{
         dt <- data.table()
       }
@@ -77,12 +87,6 @@ out.dt <- function(db,input){
         
         for(i in id){
           count <- count+1    
-          incProgress(
-            1/length(id)
-            ,message = paste0('Transposing data \n(',round(100*count/(length(id)+1)),'%)')
-            ,detail = paste0((round((length(id)-count)*t.id)),' sec')
-            )
-          
           tmp <- db[id.tmp==i]
           tmp.trans.tmp <- data.table(id.temp.to.be.renamed=i,tmp[1,..other.var])
           for(j in 1:nrow(tmp)){
@@ -92,23 +96,28 @@ out.dt <- function(db,input){
           db.out <- rbindlist(list(db.out,tmp.trans.tmp),use.names = T,fill = T)
           t.total <- Sys.time()-t
           t.id    <-  t.total/count
+          
+          incProgress(
+            1/length(id)
+            ,message = paste0('Transposing data \n(',round(100*count/(length(id)+1)),'%)')
+            ,detail = paste0((round((length(id)-count)*t.id)),' sec')
+          )
         }
       }
       
       if(nrow(db.out)>1){
         dt <- DT::datatable(
-          db.out,rownames = F,selection = 'none',extensions = 'Buttons',
+          db.out,rownames = F,selection = 'none',
           options = list(
-            dom='Bftp'
-            ,pageLength = 25
-            ,buttons = c('copy','excel')
+            dom='ftp'
+            ,pageLength = 10
             ,scrollX = TRUE
           ))}else{
             dt <- data.table()
           }
     })
   
-  dt.to.export <<- dt
+  dt.to.export <<- db.out
   
   return(dt)
 }
