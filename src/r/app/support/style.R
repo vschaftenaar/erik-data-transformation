@@ -1,7 +1,7 @@
 shadow <- T
 fontFamily <-  'calibriLight'
 fontFamily <-  'calibri'
-fontFamily <-  'bahn'
+fontFamily <- 'bahn'
 # fontFamily <-  'mono'
 
 windowsFonts(arial = "Arial Unicode MS",
@@ -17,100 +17,51 @@ windowsFonts(arial = "Arial Unicode MS",
 )
 
 
-palette <- data.table(
-  bg            = '#ffffff',
-  panel         = '#006192',
-  txt           = '#000000',
-  panel.txt     = '#ffffff',
-  fg.0          = '#006192',
-  fg.0.fade     = '#00619215',
-  fg.1          = '#8CC6D0',
-  fg.2          = '#DFEFF2',
-  fg.3          = '#FFF2CD',
-  fg.4          = '#D35F80',
-  dark          = '#00496D',
-  red           = '#D35F80',
-  green         = '#8CC6D0',
-  dropdown      = '#f6f6f6',
-  side.panel.bg = '#ffffff',
-  caret         = '#ffffff',
-  dt.head       = '#ffffff',
-  h1            = '#000000',
-  h2            = '#000000',
-  h3            = '#000000'
-)
-
-palette <- data.table(
-  bg            = '#ffffff',
-  panel         = '#4a9ac5',
-  txt           = '#000000',
-  panel.txt     = '#ffffff',
-  fg.0          = '#4a9ac5',
-  fg.0.fade     = '#4a9ac515',
-  fg.1          = '#8CC6D0',
-  fg.2          = '#DFEFF2',
-  fg.3          = '#FFF2CD',
-  fg.4          = '#D35F80',
-  dark          = '#3886b0',
-  red           = '#D35F80',
-  green         = '#8CC6D0',
-  dropdown      = '#f6f6f6',
-  side.panel.bg = '#ffffff',
-  caret         = '#ffffff',
-  dt.head       = '#ffffff',
-  h1            = '#000000',
-  h2            = '#000000',
-  h3            = '#000000'
-)
-
-
 # palette <- data.table(
-#   bg            = '#f9f9f9',
-#   panel         = '#647886',
-#   txt           = '#536470',
-#   panel.txt     = '#f8f7f7',
-#   fg.0          = '#647886',
-#   fg.0.fade     = '#64788615',
-#   fg.1          = '#8CC6D0',
-#   fg.2          = '#DFEFF2',
-#   fg.3          = '#FFF2CD',
-#   fg.4          = '#D35F80',
-#   dark          = '#536470',
-#   red           = '#D35F80',
-#   green         = '#8CC6D0',
-#   dropdown      = '#f6f6f6',
-#   side.panel.bg = '#efeded90',
-#   caret         = '#f9f9f9',
-#   dt.head.txt   = '#f9f9f9',
-#   dt.head.bg    = '#647886',
-#   h1            = '#536470',
-#   h2            = '#536470',
-#   h3            = '#536470'
+#   bg              = '#ffffff',
+#   panel           = '#006192',
+#   txt             = '#000000',
+#   panel.txt       = '#ffffff',
+#   fg.0            = '#006192',
+#   fg.0.fade       = '#00619215',
+#   fg.1            = '#8CC6D0',
+#   fg.2            = '#DFEFF2',
+#   fg.3            = '#FFF2CD',
+#   fg.4            = '#D35F80',
+#   dark            = '#00496D',
+#   red             = '#D35F80',
+#   green           = '#8CC6D0',
+#   dropdown        = '#f6f6f6',
+#   side.panel.bg   = '#ffffff',
+#   caret           = '#ffffff',
+#   dt.head         = '#ffffff',
+#   h1              = '#000000',
+#   h2              = '#7e7e7e',
+#   h3              = '#8e8e8e'
 # )
 
-# palette <- data.table(
-#   bg            = '#536470',
-#   panel         = '#536470',
-#   txt           = '#f8f7f7',
-#   panel.txt     = '#f8f7f7',
-#   fg.0          = '#647886',
-#   fg.0.fade     = '#64788615',
-#   fg.1          = '#8CC6D0',
-#   fg.2          = '#DFEFF2',
-#   fg.3          = '#FFF2CD',
-#   fg.4          = '#D35F80',
-#   dark          = '#647886',
-#   red           = '#D35F80',
-#   green         = '#8CC6D0',
-#   dropdown      = '#536470',
-#   side.panel.bg = '#647886',
-#   caret         = '#f8f7f7',
-#   dt.head       = '#f8f7f7',
-#   h1            = '#f8f7f7',
-#   h2            = '#f8f7f7',
-#   h3            = '#f8f7f7'
-# )
-
+palette <- data.table(
+  bg              = '#ffffff',
+  panel           = '#007AB3',
+  txt             = '#7e7e7e',
+  panel.txt       = '#ffffff',
+  fg.0            = '#007AB3',
+  fg.0.fade       = '#007AB315',
+  fg.1            = '#8CC6D0',
+  fg.2            = '#DFEFF2',
+  fg.3            = '#FFF2CD',
+  fg.4            = '#D35F80',
+  dark            = '#006192',
+  red             = '#D35F80',
+  green           = '#8CC6D0',
+  dropdown        = '#f6f6f6',
+  side.panel.bg   = '#ffffff',
+  caret           = '#ffffff',
+  dt.head         = '#ffffff',
+  h1              = '#000000',
+  h2              = '#007AB3',
+  h3              = '#9e9e9e'
+)
 
 # par(family=windowsFont(fontFamily))
 # barplot(rep(1,length(palette)),col=as.character(palette),names.arg = names(palette),main='palette')
@@ -122,16 +73,14 @@ getStyle <- function(){
   
   tagList <- list(
     #font
-    tags$head(tags$style(paste0('div{font-family: ',windowsFonts(fontFamily),';font-size:105%;color:',palette$txt,'}')))
-    ,tags$head(tags$style(paste0('ul{font-family: ',windowsFonts(fontFamily),';font-size:105%;color:',palette$txt,'}')))
+    tags$head(tags$style(paste0('p {font-family: ',windowsFonts(fontFamily),';font-size:105%;color:',palette$txt,'}')))
+    ,tags$head(tags$style(paste0('* {font-family: ',windowsFonts(fontFamily),';font-size:105%}')))
+    ,tags$head(tags$style(paste0('ul{font-family: ',windowsFonts(fontFamily),';font-size:95%}')))
     ,tags$head(tags$style(paste0('h1{font-family: ',windowsFonts(fontFamily),';color:',palette$h1,'}')))
-    ,tags$head(tags$style(paste0('h2{font-family: ',windowsFonts(fontFamily),';color:',palette$h2,'}')))
+    ,tags$head(tags$style(paste0('h2{font-family: ',windowsFonts(fontFamily),';color:',palette$h2,';font-weight: bold;}')))
     ,tags$head(tags$style(paste0('h3{font-family: ',windowsFonts(fontFamily),';color:',palette$h3,'}')))
     
-    ,tags$head(tags$style(paste0('.form-control{color:',palette$txt,';}')))
-    ,tags$head(tags$style(paste0('.caret{color:',palette$caret,';}')))
-    
-    # navbar  
+    # navbar
     ,tags$style(HTML('.nav-tabs {border-bottom: 1px solid #dfdfdf}'))
     ,tags$style(HTML(paste0(
       '.nav-tabs>li>a:hover,
@@ -141,7 +90,15 @@ getStyle <- function(){
      .nav-tabs>li.active>a:hover,
      .nav-tabs>li.active>a:active:hover,
      .nav-tabs>li.active>a:focus:hover
-        {color:',palette$panel.txt,';box-shadow: inset 0 -1px 0 ',palette$panel,';}')))
+        {color:',palette$txt,';background-color:','#eeeeee70',';box-shadow: inset 0 -1px 0 ',palette$panel,';}')))
+    
+    ,tags$style(HTML(paste0(
+      ".navbar-default .navbar-nav>.open>a,
+       .navbar-default .navbar-nav>.open>a:hover,
+       .navbar-default .navbar-nav>.open>a:focus {
+         background-color: ",palette$dark,";
+         color: ",palette$bg,";
+       }")))
     
     ,tags$style(HTML('.container-fluid {
        margin-right: auto;
@@ -149,14 +106,6 @@ getStyle <- function(){
        padding-left: 0px;
        padding-right: 0px;
      }'))
-    
-    ,tags$style(HTML(paste0(
-      ".navbar-default .navbar-nav>.open>a,
-       .navbar-default .navbar-nav>.open>a:hover,
-       .navbar-default .navbar-nav>.open>a:focus {
-         background-color: ",palette$dark,";
-         color: ",palette$panel.txt,";
-       }")))
     
     ,tags$style(HTML('body {padding-right:0px}'))
     
@@ -170,17 +119,16 @@ getStyle <- function(){
     ,tags$style(HTML(paste0(
       '.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a, .navbar-fixed-top
             {background-color:',palette$panel,';
-             color:',palette$panel.txt,';
-             height: 70px;
-             font-size:105%;}')))
+             color:',palette$bg,';
+             height:70px;}')))
     
     ,tags$style(HTML(paste0('
           .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
-            color: ',palette$panel.txt,';
+            color: ',palette$bg,';
             background-color:',palette$dark,';
-            height: 70px;}')))
+            height:70px;}')))
     
-    ,tags$style(HTML(paste0('.navbar-default .navbar-brand {background-color:',palette$panel,';color:',palette$bg,';height: 70px;}')))
+    ,tags$style(HTML(paste0('.navbar-default .navbar-brand {background-color:',palette$panel,';color:',palette$bg,';height:70px;}')))
     
     
     
@@ -200,7 +148,7 @@ getStyle <- function(){
     #character input
     ,tags$style(HTML(paste0("input[type=text].form-control:focus {box-shadow: 0 12px 5px -5px ",col.shadow,"50}")))
     ,tags$style(HTML(paste0("input[type=text].form-control:hover {box-shadow: 0 12px 5px -5px ",col.shadow,"50}")))
-    ,tags$style(HTML(paste0("input[type=text].form-control       {box-shadow: 0 8px 10px -10px ",col.shadow,"50}")))  
+    ,tags$style(HTML(paste0("input[type=text].form-control       {box-shadow: 0 8px 10px -10px ",col.shadow,"50}")))
     ,tags$style(HTML(paste0("input[type=text].form-control:focus {border: solid 1px ",palette$fg.0,"10}")))
     ,tags$style(HTML(paste0("input[type=text].form-control:hover {border: solid 1px",palette$fg.0,"30}")))
     ,tags$style(HTML(paste0("input[type=text].form-control       {border: solid 1px  ",palette$fg.0,"10}")))
@@ -219,7 +167,7 @@ getStyle <- function(){
     
     #pickerInput
     ,tags$style(HTML(paste0(".dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus
-                              {outline: 0;background-color:",palette$fg.0,";}")))
+                              {color:",palette$bg,";text-decoration: none;outline: 0;background-color:",palette$fg.0,"}")))
     
     ,tags$style(HTML(paste0(".btn{text-transform: none;border: solid 1px ",palette$fg.0,"10;box-shadow: 0 8px 10px -10px ",col.shadow,"50}")))
     ,tags$style(HTML(paste0(".btn:hover{text-transform: none;border: solid 1px ",palette$fg.0,"30;box-shadow: 0 12px 5px -5px ",col.shadow,"50;background-color:",palette$bg,"}")))
@@ -230,24 +178,17 @@ getStyle <- function(){
     #data table
     ,tags$head(tags$style(paste0("table.dataTable tbody tr.even  {color:",palette$txt,";background-color:",palette$bg," !important;}")))
     ,tags$head(tags$style(paste0("table.dataTable tbody tr.odd   {color:",palette$txt,";background-color:",palette$fg.0.fade," !important;}")))
-    ,tags$head(tags$style(paste0("table.dataTable thead tr       {color:",palette$bg,";background-color:",palette$fg.0," !important;}")))
-    ,tags$head(tags$style(paste0("table.dataTable thead *        {color:",palette$dt.head.txt," !important;background-color:",palette$dt.head.bg,";}")))
+    ,tags$head(tags$style(paste0("table.dataTable thead tr       {color:",palette$bg,"; background-color:",palette$fg.0," !important;}")))
     
     
     #panel
-    ,tags$style(HTML(paste0(".panel-default>.panel-heading {color: ",palette$bg,";background-color:",palette$fg.0,";border-color: red;}")))
+    ,tags$style(HTML(paste0(".panel-default>.panel-heading {color: ",palette$panel.txt,";background-color:",palette$panel,";border-color: red;}")))
     ,tags$style(HTML(paste0(".panel-body {background-color: ",palette$side.panel.bg,";}")))
     
     #bttn
     ,tags$style(HTML(paste0("
-      .btn-info, .btn-info:hover, .btn-info:active, .btn-info:active:hover,.btn-info.active:focus,.btn-info.active:hover  
+      .btn-info, .btn-info:hover, .btn-info:active, .btn-info:active:hover,.btn-info.active:focus,.btn-info.active:hover
               {color: ",palette$bg, ";background-color: ",palette$fg.0, ";border-color: transparent;}")))
-    
-    ,tags$style(HTML(paste0(".btn-default {
-        color: ",palette$fg.0,";
-        background-color: ",palette$bg,";
-        border-color: ",palette$fg.0.fade,";
-    }")))
     
     ,tags$style(HTML(paste0("
       .open>.dropdown-toggle.btn-info,.open>.dropdown-toggle.btn-info:active,.open>.dropdown-toggle.btn-info:focus,.open>.dropdown-toggle.btn-info:hover
@@ -255,11 +196,12 @@ getStyle <- function(){
     
     #dropdown-menu
     ,tags$style(HTML(paste0("
-      .dropdown-menu {background-color:",palette$dropdown,";font-size:105%;}")))
+      .dropdown-menu {background-color:",palette$dropdown,";}")))
     
     #topbar
-    ,tags$style(HTML('#logo-id {position: fixed;right:  25px;top: 3px;}'))
-    # ,tags$style(HTML('#title-id{position: fixed;right: 25vw;top: 15px;}'))    
+    ,tags$style(HTML('#logo-id {position: fixed;right:  25px;top: 15px;}'))
+    ,tags$style(HTML('#lizy-id {position: fixed;right:  100px;top: 15px;}'))
+    # ,tags$style(HTML('#title-id{position: fixed;right: 25vw;top: 15px;}'))
     
     #materialSwitch
     ,tags$style(HTML(paste0('.material-switch > input[type="checkbox"]:checked + label::before
@@ -270,38 +212,37 @@ getStyle <- function(){
     ,.material-switch > input[type="checkbox"] + label::after {
       background-color: ',palette$fg.0,'35;}')))
     
+    
     # progressbar
     ,tags$style(HTML(paste0(
       ".shiny-notification
                 {position:  fixed;
                  top:       80px;
-                 left:      25vw;
-                 width:     50vw;
-                 height:    100px;
+                 left:      33vw;
+                 width:     33vw;
+                 height:    75px;
                  background-color:#f5f5f5;
-                 font-size: 20px;
+                 font-size: 16px;
                  opacity: 1;}")))
     
-    ,tags$style(HTML(paste0(".shiny-progress, .progress-text, .progress-message, .progress-detail{
-      color: black;
+    ,tags$style(HTML(paste0(".shiny-progress, .progress-text, .progress-message, .progress-detail, {
+      color: #585858;
       opacity: 1;
     }")))
     
     ,tags$style(HTML(paste0(
       ".progress-bar
-          {background-color:",palette$dark,";}")))
+          {background-color:",palette$fg.0,";}")))
     
     ,tags$style(HTML(paste0(
       ".progress-bar:last-child:before 
-          {background-color:",palette$fg.0,"50;}")))
+          {background-color:",palette$fg.0,"25;}")))
     
     ,tags$style(HTML(paste0(
       ".shiny-progress-notification .progress {
-          margin-bottom: 5px;
-          height: 35px;}")))
+          margin-bottom: 3px;
+          height: 25px;}")))
     
   )
-  
-  
   return(tagList)
 }
