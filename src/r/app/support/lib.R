@@ -9,8 +9,8 @@ packages <- c(
   ,"shinyWidgets"
   ,"data.table"
   #,"readxl"
-  #,"xlsx"
-  ,'openxlsx2'
+  ,"xlsx"
+  # ,'openxlsx2'
   )
 
 

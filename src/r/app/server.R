@@ -29,10 +29,11 @@ server <- function(input, output, session) {
     if(exists('dt.to.export')){
       # file.name <- './out/out.xlsx'
       file.name <- '../../../out/out.xlsx'
-      openxlsx2::write_xlsx(file = file.name,x = dt.to.export,na.string=F,asTable = T)
-      wb <- openxlsx2::wb_load(file.name)
-      openxlsx2::wb_open(wb)
-    
+      
+      withProgress(value = .8,message = 'exporting data to excel',expr={
+        xlsx::write.xlsx(x = dt.to.export,file = file.name,sheetName = 'data',showNA = F,row.names = F)})
+      
+        openxlsx2::xl_open(file.name)
     }else{
       show_alert(
         title = "Error !!",
